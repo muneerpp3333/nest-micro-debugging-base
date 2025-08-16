@@ -1,0 +1,77 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2023",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "defaultLibraryPrefix/common": [
+        "libs/common/src"
+      ],
+      "defaultLibraryPrefix/common/*": [
+        "libs/common/src/*"
+      ],
+      "defaultLibraryPrefix/entities": [
+        "libs/entities/src"
+      ],
+      "defaultLibraryPrefix/entities/*": [
+        "libs/entities/src/*"
+      ],
+      "defaultLibraryPrefix/langgraph-client": [
+        "libs/langgraph-client/src"
+      ],
+      "defaultLibraryPrefix/langgraph-client/*": [
+        "libs/langgraph-client/src/*"
+      ],
+      "defaultLibraryPrefix/shared-config": [
+        "libs/shared-config/src"
+      ],
+      "defaultLibraryPrefix/shared-config/*": [
+        "libs/shared-config/src/*"
+      ],
+      "defaultLibraryPrefix/shared-database": [
+        "libs/shared-database/src"
+      ],
+      "defaultLibraryPrefix/shared-database/*": [
+        "libs/shared-database/src/*"
+      ],
+      "defaultLibraryPrefix/shared-events": [
+        "libs/shared-events/src"
+      ],
+      "defaultLibraryPrefix/shared-events/*": [
+        "libs/shared-events/src/*"
+      ],
+      "defaultLibraryPrefix/shared-queue": [
+        "libs/shared-queue/src"
+      ],
+      "defaultLibraryPrefix/shared-queue/*": [
+        "libs/shared-queue/src/*"
+      ],
+      "defaultLibraryPrefix/shared-rbtmq": [
+        "libs/shared-rbtmq/src"
+      ],
+      "defaultLibraryPrefix/shared-rbtmq/*": [
+        "libs/shared-rbtmq/src/*"
+      ],
+      "defaultLibraryPrefix/storage": [
+        "libs/storage/src"
+      ],
+      "defaultLibraryPrefix/storage/*": [
+        "libs/storage/src/*"
+      ]
+    }
+  }
+}
