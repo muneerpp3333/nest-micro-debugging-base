@@ -14,7 +14,7 @@ export const configuration = () => ({
     process.env.ENCRYPTION_KEY || "default-encryption-key-change-in-production",
   // RabbitMQ Configuration
   RABBITMQ_HOST: process.env.RABBITMQ_HOST || "localhost",
-  RABBITMQ_PORT: parseInt(process.env.RABBITMQ_PORT || "5673", 10),
+  RABBITMQ_PORT: parseInt(process.env.RABBITMQ_PORT || "5672", 10),
   RABBITMQ_USERNAME: process.env.RABBITMQ_USERNAME || "guest",
   RABBITMQ_PASSWORD: process.env.RABBITMQ_PASSWORD || "guest",
   // Queue names
@@ -36,7 +36,7 @@ export const configuration = () => ({
   LISTING_SERVICE_URL: process.env.LISTING_SERVICE_URL || "",
   MESSAGING_SERVICE_URL: process.env.MESSAGING_SERVICE_URL || "",
   BILLING_SERVICE_URL: process.env.BILLING_SERVICE_URL || "",
-  RABBITMQ_MANAGEMENT_URL: process.env.RABBITMQ_MANAGEMENT_URL || "http://localhost:15673",
+  RABBITMQ_MANAGEMENT_URL: process.env.RABBITMQ_MANAGEMENT_URL || "http://localhost:15672",
   // Flag to disable scheduled health checks in local development
   DISABLE_HEALTH_CHECKS: process.env.DISABLE_HEALTH_CHECKS || "",
 });

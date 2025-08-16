@@ -15,13 +15,10 @@ async function bootstrap() {
     const queue = process.env.RABBITMQ_MESSAGING_QUEUE || 'messaging-queue';
 
     // Connect to RabbitMQ
-    await Promise.all([
-      app.connectMicroservice(sharedService.getRmqOptions(queue)),
-      app.startAllMicroservices(),
-    ]);
+    app.connectMicroservice(sharedService.getRmqOptions(queue));
 
-    await app.init();
-    logger.log('Messaging service started');
+    // Start all microservices
+    await app.startAllMicroservices();
   } catch (error) {
     logger.error('Failed to start Messaging service:', error);
     process.exit(1);

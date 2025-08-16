@@ -26,12 +26,21 @@ export class MessagingController {
   }
 
   @MessagePattern('get_messages')
-  getMessages(@Payload() data: { userId: string; limit?: number }): MessageResponse {
+  getMessages(
+    @Payload() data: { userId: string; limit?: number },
+  ): MessageResponse {
     return this.messagingService.getMessages(data);
   }
 
   @MessagePattern('mark_read')
-  markAsRead(@Payload() data: { messageId: string; userId: string }): MessageResponse {
+  markAsRead(
+    @Payload() data: { messageId: string; userId: string },
+  ): MessageResponse {
     return this.messagingService.markAsRead(data);
+  }
+
+  @MessagePattern('test_service')
+  testService(@Payload() data: any): MessageResponse {
+    return this.messagingService.testService(data);
   }
 }

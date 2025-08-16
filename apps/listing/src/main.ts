@@ -15,13 +15,16 @@ async function bootstrap() {
     const queue = process.env.RABBITMQ_LISTING_QUEUE || 'listing-queue';
 
     // Connect to RabbitMQ
-    await Promise.all([
-      app.connectMicroservice(sharedService.getRmqOptions(queue)),
-      app.startAllMicroservices(),
-    ]);
-
-    await app.init();
-    logger.log('Listing service started');
+    app.connectMicroservice(sharedService.getRmqOptions(queue));
+    
+    // Start all microservices
+    await app.startAllMicroservices();
+    
+    // For debugging and health checks, also listen on HTTP port (optional)
+    const port = process.env.LISTING_PORT || 5002;
+    await app.listen(port);
+    
+    logger.log(`Listing service started on port ${port} (HTTP) and listening to RabbitMQ queue: ${queue}`);
   } catch (error) {
     logger.error('Failed to start Listing service:', error);
     process.exit(1);

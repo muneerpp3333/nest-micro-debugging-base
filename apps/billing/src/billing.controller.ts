@@ -47,4 +47,9 @@ export class BillingController {
   ): BillingResponse {
     return this.billingService.getUserInvoices(data);
   }
+
+  @MessagePattern('test_service')
+  testService(@Payload() data: any): BillingResponse {
+    return this.billingService.testService(data);
+  }
 }

@@ -16,7 +16,7 @@ export class SharedRbtmqModule {
           const user = configService.get<string>('RABBITMQ_USERNAME') || 'guest';
           const password = configService.get<string>('RABBITMQ_PASSWORD') || 'guest';
           const host = configService.get<string>('RABBITMQ_HOST') || 'localhost';
-          const port = configService.get<number>('RABBITMQ_PORT') || 5673;
+          const port = configService.get<number>('RABBITMQ_PORT') || 5672;
 
           const clientProxy = ClientProxyFactory.create({
             transport: Transport.RMQ,

@@ -82,4 +82,18 @@ export class BillingService {
       timestamp: new Date().toISOString(),
     };
   }
+
+  testService(data: any): BillingResponse {
+    console.log('Test service called on Billing service:', data);
+    return {
+      status: 'success',
+      message: 'Billing service is healthy and responding',
+      data: {
+        service: 'billing',
+        echo: data,
+        capabilities: ['create_invoice', 'process_payment', 'get_invoice', 'get_user_invoices'],
+      },
+      timestamp: new Date().toISOString(),
+    };
+  }
 }

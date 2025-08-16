@@ -4,7 +4,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ApiService } from './api.service';
 import { SharedModule, SERVICE_NAMES } from '../../../libs/shared/src';
-import { AiSdrResolver } from './graphql/resolvers/ai-sdr.resolver';
+import { ServicesTestResolver } from './graphql/resolvers/services-test.resolver';
 
 @Module({
   imports: [
@@ -18,10 +18,6 @@ import { AiSdrResolver } from './graphql/resolvers/ai-sdr.resolver';
       introspection: true,
     }),
     SharedModule.registerRmq(
-      SERVICE_NAMES.AI_SDR,
-      process.env.RABBITMQ_AI_SDR_QUEUE || 'ai-sdr-queue',
-    ),
-    SharedModule.registerRmq(
       SERVICE_NAMES.LISTING,
       process.env.RABBITMQ_LISTING_QUEUE || 'listing-queue',
     ),
@@ -34,6 +30,6 @@ import { AiSdrResolver } from './graphql/resolvers/ai-sdr.resolver';
       process.env.RABBITMQ_BILLING_QUEUE || 'billing-queue',
     ),
   ],
-  providers: [ApiService, AiSdrResolver],
+  providers: [ApiService, ServicesTestResolver],
 })
 export class ApiModule {}

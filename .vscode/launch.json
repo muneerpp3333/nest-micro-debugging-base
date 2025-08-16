@@ -4,23 +4,6 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug AI-SDR (Main)",
-      "args": ["${workspaceFolder}/apps/ai-sdr/src/main.ts"],
-      "runtimeArgs": [
-        "--nolazy",
-        "-r",
-        "ts-node/register",
-        "-r",
-        "tsconfig-paths/register"
-      ],
-      "sourceMaps": true,
-      "envFile": "${workspaceFolder}/.env.local",
-      "cwd": "${workspaceRoot}",
-      "console": "integratedTerminal"
-    },
-    {
-      "type": "node",
-      "request": "launch",
       "name": "Debug API Service",
       "args": ["${workspaceFolder}/apps/api/src/main.ts"],
       "runtimeArgs": [

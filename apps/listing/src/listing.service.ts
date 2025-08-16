@@ -66,4 +66,18 @@ export class ListingService {
       timestamp: new Date().toISOString(),
     };
   }
+
+  testService(data: any): ListingResponse {
+    console.log('Test service called on Listing service:', data);
+    return {
+      status: 'success',
+      message: 'Listing service is healthy and responding',
+      data: {
+        service: 'listing',
+        echo: data,
+        capabilities: ['create_listing', 'update_listing', 'get_listing', 'list_listings'],
+      },
+      timestamp: new Date().toISOString(),
+    };
+  }
 }

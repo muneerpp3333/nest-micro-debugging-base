@@ -15,13 +15,16 @@ async function bootstrap() {
     const queue = process.env.RABBITMQ_BILLING_QUEUE || 'billing-queue';
 
     // Connect to RabbitMQ
-    await Promise.all([
-      app.connectMicroservice(sharedService.getRmqOptions(queue)),
-      app.startAllMicroservices(),
-    ]);
-
-    await app.init();
-    logger.log('Billing service started');
+    app.connectMicroservice(sharedService.getRmqOptions(queue));
+    
+    // Start all microservices
+    await app.startAllMicroservices();
+    
+    // For debugging and health checks, also listen on HTTP port (optional)
+    const port = process.env.BILLING_PORT || 5004;
+    await app.listen(port);
+    
+    logger.log(`Billing service started on port ${port} (HTTP) and listening to RabbitMQ queue: ${queue}`);
   } catch (error) {
     logger.error('Failed to start Billing service:', error);
     process.exit(1);

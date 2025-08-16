@@ -11,11 +11,9 @@
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/apps/ai-sdr/main",
+    "start:prod": "node dist/apps/api/main",
     "start:api": "nest start api",
     "start:api:dev": "nest start api --watch",
-    "start:ai-sdr": "nest start ai-sdr",
-    "start:ai-sdr:dev": "nest start ai-sdr --watch",
     "start:listing": "nest start listing",
     "start:listing:dev": "nest start listing --watch",
     "start:messaging": "nest start messaging",
@@ -29,7 +27,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./apps/ai-sdr/test/jest-e2e.json"
+    "test:e2e": "jest --config ./apps/api/test/jest-e2e.json"
   },
   "dependencies": {
     "@nestjs/apollo": "^12.2.0",

@@ -1,27 +1,12 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
-import {
-  SERVICE_NAMES,
-  ProcessRequest,
-  AnalyzeRequest,
-} from '../../../libs/shared/src';
+import { SERVICE_NAMES } from '../../../libs/shared/src';
 
-interface ProcessResponse {
+interface ServiceTestResponse {
   status: string;
   message: string;
-  data: ProcessRequest;
-  timestamp: string;
-}
-
-interface AnalyzeResponse {
-  status: string;
-  message: string;
-  analysis: {
-    processed: boolean;
-    insights: string[];
-  };
-  data: AnalyzeRequest;
+  data: any;
   timestamp: string;
 }
 
@@ -49,19 +34,42 @@ interface BillingResponse {
 @Injectable()
 export class ApiService {
   constructor(
-    @Inject(SERVICE_NAMES.AI_SDR) private readonly aiSdrClient: ClientProxy,
     @Inject(SERVICE_NAMES.LISTING) private readonly listingClient: ClientProxy,
-    @Inject(SERVICE_NAMES.MESSAGING) private readonly messagingClient: ClientProxy,
+    @Inject(SERVICE_NAMES.MESSAGING)
+    private readonly messagingClient: ClientProxy,
     @Inject(SERVICE_NAMES.BILLING) private readonly billingClient: ClientProxy,
   ) {}
 
-  // AI-SDR methods
-  processAiSdrRequest(data: ProcessRequest): Observable<ProcessResponse> {
-    return this.aiSdrClient.send<ProcessResponse>('process_ai_sdr', data);
-  }
+  // Service communication test method
+  testServiceCommunication(
+    service: string,
+    data: unknown,
+  ): Observable<ServiceTestResponse> {
+    const testData = {
+      message: `Test message from API Gateway`,
+      data: data,
+      timestamp: new Date().toISOString(),
+    };
 
-  analyzeData(data: AnalyzeRequest): Observable<AnalyzeResponse> {
-    return this.aiSdrClient.send<AnalyzeResponse>('analyze_data', data);
+    switch (service) {
+      case 'listing':
+        return this.listingClient.send<ServiceTestResponse>(
+          'test_service',
+          testData,
+        );
+      case 'messaging':
+        return this.messagingClient.send<ServiceTestResponse>(
+          'test_service',
+          testData,
+        );
+      case 'billing':
+        return this.billingClient.send<ServiceTestResponse>(
+          'test_service',
+          testData,
+        );
+      default:
+        throw new Error(`Unknown service: ${service}`);
+    }
   }
 
   // Listing methods
@@ -104,7 +112,9 @@ export class ApiService {
   }
 
   getInvoice(invoiceId: string): Observable<BillingResponse> {
-    return this.billingClient.send<BillingResponse>('get_invoice', { invoiceId });
+    return this.billingClient.send<BillingResponse>('get_invoice', {
+      invoiceId,
+    });
   }
 
   getUserInvoices(data: any): Observable<BillingResponse> {

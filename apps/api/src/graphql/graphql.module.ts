@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { AiSdrResolver } from './resolvers/ai-sdr.resolver';
+import { ServicesTestResolver } from './resolvers/services-test.resolver';
 import { ApiService } from '../api.service';
 
 @Module({
@@ -13,7 +13,7 @@ import { ApiService } from '../api.service';
       introspection: true,
     }),
   ],
-  providers: [AiSdrResolver, ApiService],
+  providers: [ServicesTestResolver, ApiService],
   exports: [GraphQLModule],
 })
 export class ApiGraphQLModule {}

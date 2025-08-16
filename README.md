@@ -127,13 +127,13 @@ This project demonstrates a comprehensive microservices architecture using NestJ
    ```bash
    pnpm start:rabbitmq
    ```
-   This will start RabbitMQ on `localhost:5673` with management UI on `localhost:15673`
+   This will start RabbitMQ on `localhost:5672` with management UI on `localhost:15672`
 
 3. **Set up environment variables:**
    Create a `.env` file in the root directory with:
    ```env
    RABBITMQ_HOST=localhost
-   RABBITMQ_PORT=5673
+   RABBITMQ_PORT=5672
    RABBITMQ_USERNAME=guest
    RABBITMQ_PASSWORD=guest
    RABBITMQ_AI_SDR_QUEUE=ai-sdr-queue
@@ -347,7 +347,7 @@ mutation {
 
 ## RabbitMQ Management
 
-- **Management UI:** http://localhost:15673
+- **Management UI:** http://localhost:15672
 - **Username:** guest
 - **Password:** guest
 

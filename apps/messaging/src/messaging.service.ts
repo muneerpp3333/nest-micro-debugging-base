@@ -21,7 +21,11 @@ export class MessagingService {
     return {
       status: 'success',
       message: 'Message sent successfully',
-      data: { id: 'msg-' + Date.now(), ...data, sentAt: new Date().toISOString() },
+      data: {
+        id: 'msg-' + Date.now(),
+        ...data,
+        sentAt: new Date().toISOString(),
+      },
       timestamp: new Date().toISOString(),
     };
   }
@@ -29,8 +33,22 @@ export class MessagingService {
   getMessages(data: { userId: string; limit?: number }): MessageResponse {
     console.log('Getting messages for user:', data.userId);
     const messages = [
-      { id: '1', from: 'user1', to: data.userId, content: 'Hello!', type: 'text', sentAt: new Date().toISOString() },
-      { id: '2', from: 'user2', to: data.userId, content: 'How are you?', type: 'text', sentAt: new Date().toISOString() },
+      {
+        id: '1',
+        from: 'user1',
+        to: data.userId,
+        content: 'Hello!',
+        type: 'text',
+        sentAt: new Date().toISOString(),
+      },
+      {
+        id: '2',
+        from: 'user2',
+        to: data.userId,
+        content: 'How are you?',
+        type: 'text',
+        sentAt: new Date().toISOString(),
+      },
     ];
     return {
       status: 'success',
@@ -45,7 +63,25 @@ export class MessagingService {
     return {
       status: 'success',
       message: 'Message marked as read',
-      data: { messageId: data.messageId, userId: data.userId, readAt: new Date().toISOString() },
+      data: {
+        messageId: data.messageId,
+        userId: data.userId,
+        readAt: new Date().toISOString(),
+      },
+      timestamp: new Date().toISOString(),
+    };
+  }
+
+  testService(data: unknown): MessageResponse {
+    console.log('Test service called on Messaging service:', data);
+    return {
+      status: 'success',
+      message: 'Messaging service is healthy and responding',
+      data: {
+        service: 'messaging',
+        echo: data,
+        capabilities: ['send_message', 'get_messages', 'mark_read'],
+      },
       timestamp: new Date().toISOString(),
     };
   }

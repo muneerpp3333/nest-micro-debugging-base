@@ -8,7 +8,7 @@ export class SharedService {
 
   getRmqOptions(queue: string): RmqOptions {
     const host = this.configService.get<string>('RABBITMQ_HOST') || 'localhost';
-    const port = this.configService.get<number>('RABBITMQ_PORT') || 5673;
+    const port = this.configService.get<number>('RABBITMQ_PORT') || 5672;
     const username =
       this.configService.get<string>('RABBITMQ_USERNAME') || 'guest';
     const password =

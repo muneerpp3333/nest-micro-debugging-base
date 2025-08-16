@@ -16,7 +16,7 @@ export class SharedModule {
         useFactory: (configService: ConfigService) => {
           const host =
             configService.get<string>('RABBITMQ_HOST') || 'localhost';
-          const port = configService.get<number>('RABBITMQ_PORT') || 5673;
+          const port = configService.get<number>('RABBITMQ_PORT') || 5672;
           const username =
             configService.get<string>('RABBITMQ_USERNAME') || 'guest';
           const password =

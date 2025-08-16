@@ -46,4 +46,9 @@ export class ListingController {
   listListings(@Payload() data: { userId?: string; limit?: number }): ListingResponse {
     return this.listingService.listListings(data);
   }
+
+  @MessagePattern('test_service')
+  testService(@Payload() data: any): ListingResponse {
+    return this.listingService.testService(data);
+  }
 }
