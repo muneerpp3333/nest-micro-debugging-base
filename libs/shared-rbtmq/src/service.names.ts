@@ -1,0 +1,25 @@
+export const SERVICE_NAMES = {
+  WHATSAPP: "WHATSAPP_SERVICE",
+  API: "API_SERVICE",
+  LISTING: "LISTING_SERVICE",
+  BILLING: "BILLING_SERVICE",
+  MESSAGING: "MESSAGING_SERVICE",
+  AI_SDR: "AI_SDR_SERVICE",
+  AGENTS: "AGENTS_SERVICE",
+  // Legacy names for backward compatibility
+  WHATSAPP_SERVICE: "WHATSAPP_SERVICE",
+  API_SERVICE: "API_SERVICE",
+  LISTING_SERVICE: "LISTING_SERVICE",
+  MESSAGING_SERVICE: "MESSAGING_SERVICE",
+  AI_SDR_SERVICE: "AI_SDR_SERVICE",
+};
+
+export const QUEUE_NAMES = {
+  WHATSAPP_QUEUE: "whatsapp_queue",
+  API_QUEUE: "api_queue",
+  LISTING_QUEUE: "listing_queue",
+  BILLING_QUEUE: "billing_queue",
+  MESSAGING_QUEUE: "messaging_queue",
+  AI_SDR_QUEUE: "ai-sdr-queue",
+  AGENTS_QUEUE: "agents_queue",
+};

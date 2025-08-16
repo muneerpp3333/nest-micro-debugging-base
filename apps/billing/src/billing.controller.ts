@@ -42,7 +42,9 @@ export class BillingController {
   }
 
   @MessagePattern('get_user_invoices')
-  getUserInvoices(@Payload() data: { userId: string; limit?: number }): BillingResponse {
+  getUserInvoices(
+    @Payload() data: { userId: string; limit?: number },
+  ): BillingResponse {
     return this.billingService.getUserInvoices(data);
   }
 }
